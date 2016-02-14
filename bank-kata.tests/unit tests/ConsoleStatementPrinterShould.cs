@@ -1,6 +1,7 @@
 ﻿using System;
 using bank_kata.Infrastructure;
 using bank_kata.Statements;
+using bank_kata.Transactions;
 using NSubstitute;
 using Xunit;
 
@@ -22,33 +23,26 @@ namespace bank_kata.tests.unit_tests
         [Fact]
         public void ask_to_format_orderlines()
         {
-            var statementLine1 = new StatementLine(new DateTime(2016, 02, 15), -20, 20);
-            var statementLine2 = new StatementLine(new DateTime(2016, 02, 15), 40, 40);
-
-            _consoleStatementPrinter.Print(Statement.Create(new[]
+            _consoleStatementPrinter.Print(new[]
             {
-                statementLine1,
-                statementLine2
-            }));
+                new Transaction(40, new DateTime(2016, 02, 14)),
+                new Transaction(-20, new DateTime(2016, 02, 15)),
+            });
 
-            _statementLineFormatter.Received().Format(statementLine2);
-            _statementLineFormatter.Received().Format(statementLine1);
+            _statementLineFormatter.Received().Format(new StatementLine(new DateTime(2016, 02, 15), 40, 40));
+            _statementLineFormatter.Received().Format(new StatementLine(new DateTime(2016, 02, 15), -20, 20));
         }
 
         [Fact]
         public void print_statement_to_the_console()
         {
-            var statementLine1 = new StatementLine(new DateTime(2016, 02, 15), -20, 20);
-            var statementLine2 = new StatementLine(new DateTime(2016, 02, 15), 40, 40);
-
-            _consoleStatementPrinter.Print(Statement.Create(new[]
+            _consoleStatementPrinter.Print(new[]
             {
-                statementLine1,
-                statementLine2
-            }));
+                new Transaction(40, new DateTime(2016, 02, 14)),
+                new Transaction(-20, new DateTime(2016, 02, 15)),
+            });
 
             _console.Received().Print(Arg.Any<string>());
         }
     }
-
 }

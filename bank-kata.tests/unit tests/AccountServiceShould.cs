@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using bank_kata.Infrastructure;
 using bank_kata.Statements;
 using bank_kata.Transactions;
@@ -10,6 +11,11 @@ namespace bank_kata.tests.unit_tests
     public class AccountServiceShould
     {
         private static readonly DateTime SOME_TIME = new DateTime(2016, 02, 14);
+        private readonly IEnumerable<Transaction> SOME_TRANSACTIONS = new[]
+        {
+            new Transaction(40, new DateTime(2016, 02, 14)),
+            new Transaction(-20, new DateTime(2016, 02, 15)),
+        };
 
         private readonly AccountService _accountService;
         private readonly ITransactionRepository _transactionRepository;
@@ -48,19 +54,11 @@ namespace bank_kata.tests.unit_tests
         [Fact]
         public void print_a_statement()
         {
-            _transactionRepository.GetTransactions().Returns(new[]
-            {
-                new Transaction(40, new DateTime(2016, 02, 14)),
-                new Transaction(-20, new DateTime(2016, 02, 15)),
-            });
+            _transactionRepository.GetTransactions().Returns(SOME_TRANSACTIONS);
 
             _accountService.PrintStatement();
 
-            _statementPrinter.Received().Print(Statement.Create(new []
-            {
-                new StatementLine(new DateTime(2016, 02, 15), -20, 20),
-                new StatementLine(new DateTime(2016, 02, 14), 40, 40),
-            }));
+            _statementPrinter.Received().Print(SOME_TRANSACTIONS);
         }
     }
 }
