@@ -23,7 +23,7 @@ namespace bank_kata.tests.unit_tests
         [Fact]
         public void Create_A_Deposit_Transaction_From_Current_System_Date()
         {
-            _clock.GetTime().Returns(SOME_TIME);
+            _clock.Now().Returns(SOME_TIME);
 
             var transaction = _transactionFactory.CreateDepositTransaction(300);
 
@@ -33,7 +33,7 @@ namespace bank_kata.tests.unit_tests
         [Fact]
         public void Create_A_Withdraw_Transaction_From_Current_System_Date()
         {
-            _clock.GetTime().Returns(SOME_TIME);
+            _clock.Now().Returns(SOME_TIME);
 
             var transaction = _transactionFactory.CreateWithdrawTransaction(300);
 

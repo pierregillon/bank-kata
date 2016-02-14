@@ -4,6 +4,6 @@ namespace bank_kata.Infrastructure
 {
     public interface IClock
     {
-        DateTime GetTime();
+        DateTime Now();
     }
 }

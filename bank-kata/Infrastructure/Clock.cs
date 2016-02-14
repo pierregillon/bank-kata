@@ -4,7 +4,7 @@ namespace bank_kata.Infrastructure
 {
     public class Clock : IClock
     {
-        public DateTime GetTime()
+        public DateTime Now()
         {
             return DateTime.Now;
         }

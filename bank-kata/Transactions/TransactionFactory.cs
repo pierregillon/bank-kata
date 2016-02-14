@@ -13,12 +13,12 @@ namespace bank_kata.Transactions
 
         public Transaction CreateDepositTransaction(int amount)
         {
-            return new Transaction(amount, _clock.GetTime());
+            return new Transaction(amount, _clock.Now());
         }
 
         public Transaction CreateWithdrawTransaction(int amount)
         {
-            return new Transaction(-amount, _clock.GetTime());
+            return new Transaction(-amount, _clock.Now());
         }
     }
 }

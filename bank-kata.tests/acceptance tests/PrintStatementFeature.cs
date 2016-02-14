@@ -27,7 +27,7 @@ namespace bank_kata.tests.acceptance_tests
         [Fact]
         public void an_account_service_should_print_statement_containing_all_transactions()
         {
-            _clock.GetTime().Returns(
+            _clock.Now().Returns(
                 new DateTime(2014, 04, 01),
                 new DateTime(2014, 04, 02),
                 new DateTime(2014, 04, 10));
