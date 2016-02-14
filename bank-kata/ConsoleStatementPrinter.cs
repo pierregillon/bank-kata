@@ -1,3 +1,5 @@
+using System;
+
 namespace bank_kata
 {
     public class ConsoleStatementPrinter : IStatementPrinter
@@ -6,7 +8,7 @@ namespace bank_kata
         private readonly StatementLineFormatter _statementLineFormatter;
 
         public ConsoleStatementPrinter(
-            IConsole console, 
+            IConsole console,
             StatementLineFormatter statementLineFormatter)
         {
             _console = console;
@@ -15,9 +17,11 @@ namespace bank_kata
 
         public void Print(Statement statement)
         {
+            var line = "DATE | AMOUNT | BALANCE" + Environment.NewLine;
             foreach (var orderLine in statement.OrderLines) {
-                _statementLineFormatter.Format(orderLine);
+                line += _statementLineFormatter.Format(orderLine) + Environment.NewLine;
             }
+            _console.Print(line);
         }
     }
 }
