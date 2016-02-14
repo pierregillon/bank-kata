@@ -80,6 +80,7 @@
     <Compile Include="acceptance-tests\StatementPrinting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="unit-tests\BankServiceShould.cs" />
+    <Compile Include="unit-tests\ConsoleStatementPrinterShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

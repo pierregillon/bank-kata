@@ -8,8 +8,11 @@ namespace bank_kata.tests
         [Fact]
         public void a_bank_service_should_print_statements_in_inverse_chronological_order()
         {
-            var bankService = new BankService(new TransactionRepository(), new ConsoleStatementPrinter(), new Clock());
             var console = Substitute.For<IConsole>();
+            var bankService = new BankService(
+                new InMemoryTransactionRepository(), 
+                new ConsoleStatementPrinter(console, new StatementLineFormatter()), 
+                new Clock());
 
             bankService.Deposit(1000);
             bankService.Withdraw(100);

@@ -5,11 +5,11 @@ namespace bank_kata
 {
     public class Statement
     {
-        private readonly IEnumerable<StatementLine> _statements;
+        public IEnumerable<StatementLine> OrderLines { get; }
 
         private Statement(IEnumerable<StatementLine> statements)
         {
-            _statements = statements;
+            OrderLines = statements;
         }
 
         public static Statement Create(IEnumerable<StatementLine> statementLines)
@@ -26,11 +26,11 @@ namespace bank_kata
         }
         protected bool Equals(Statement other)
         {
-            return other._statements.SequenceEqual(_statements);
+            return other.OrderLines.SequenceEqual(OrderLines);
         }
         public override int GetHashCode()
         {
-            return _statements?.GetHashCode() ?? 0;
+            return OrderLines?.GetHashCode() ?? 0;
         }
     }
 }
