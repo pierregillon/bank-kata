@@ -33,7 +33,7 @@ namespace bank_kata.tests.unit_tests
         [Fact]
         public void store_a_deposit_transaction()
         {
-            _transactionFactory.CreateNew(Arg.Any<int>()).Returns(info => new Transaction((int) info[0], SOME_TIME));
+            _transactionFactory.CreateDepositTransaction(Arg.Any<int>()).Returns(info => new Transaction((int) info[0], SOME_TIME));
 
             _accountService.Deposit(100);
 
@@ -43,7 +43,7 @@ namespace bank_kata.tests.unit_tests
         [Fact]
         public void store_a_withdraw_transaction()
         {
-            _transactionFactory.CreateNew(Arg.Any<int>()).Returns(info => new Transaction((int) info[0], SOME_TIME));
+            _transactionFactory.CreateWithdrawTransaction(Arg.Any<int>()).Returns(info => new Transaction(-(int) info[0], SOME_TIME));
 
             _accountService.Withdraw(50);
 

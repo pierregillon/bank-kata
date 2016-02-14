@@ -21,11 +21,11 @@ namespace bank_kata
 
         public void Deposit(int amount)
         {
-            _transactionRepository.Add(_transactionFactory.CreateNew(amount));
+            _transactionRepository.Add(_transactionFactory.CreateDepositTransaction(amount));
         }
         public void Withdraw(int amount)
         {
-            _transactionRepository.Add(_transactionFactory.CreateNew(-amount));
+            _transactionRepository.Add(_transactionFactory.CreateWithdrawTransaction(amount));
         }
         public void PrintStatement()
         {

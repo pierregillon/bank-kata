@@ -21,13 +21,23 @@ namespace bank_kata.tests.unit_tests
         }
 
         [Fact]
-        public void Create_A_Transaction_From_Current_System_Date()
+        public void Create_A_Deposit_Transaction_From_Current_System_Date()
         {
             _clock.GetTime().Returns(SOME_TIME);
 
-            var transaction = _transactionFactory.CreateNew(300);
+            var transaction = _transactionFactory.CreateDepositTransaction(300);
 
             Check.That(transaction).IsEqualTo(new Transaction(300, SOME_TIME));
+        }
+
+        [Fact]
+        public void Create_A_Withdraw_Transaction_From_Current_System_Date()
+        {
+            _clock.GetTime().Returns(SOME_TIME);
+
+            var transaction = _transactionFactory.CreateWithdrawTransaction(300);
+
+            Check.That(transaction).IsEqualTo(new Transaction(-300, SOME_TIME));
         }
     }
 }

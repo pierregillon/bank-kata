@@ -2,6 +2,7 @@ namespace bank_kata.Transactions
 {
     public interface ITransactionFactory
     {
-        Transaction CreateNew(int amount);
+        Transaction CreateDepositTransaction(int amount);
+        Transaction CreateWithdrawTransaction(int amount);
     }
 }

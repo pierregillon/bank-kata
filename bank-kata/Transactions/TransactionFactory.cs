@@ -11,9 +11,14 @@ namespace bank_kata.Transactions
             _clock = clock;
         }
 
-        public Transaction CreateNew(int amount)
+        public Transaction CreateDepositTransaction(int amount)
         {
             return new Transaction(amount, _clock.GetTime());
+        }
+
+        public Transaction CreateWithdrawTransaction(int amount)
+        {
+            return new Transaction(-amount, _clock.GetTime());
         }
     }
 }
