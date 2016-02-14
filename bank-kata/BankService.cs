@@ -13,17 +13,20 @@ namespace bank_kata
 
         public void Deposit(int amount)
         {
-            _transactionRepository.Add(new Transaction(amount, _clock.GetTime()));
+            _transactionRepository.Add(CreateTransaction(amount));
         }
-
         public void Withdraw(int amount)
         {
-            _transactionRepository.Add(new Transaction(-amount, _clock.GetTime()));
+            _transactionRepository.Add(CreateTransaction(-amount));
         }
-
         public void PrintStatements()
         {
             throw new System.NotImplementedException();
+        }
+
+        private Transaction CreateTransaction(int amount)
+        {
+            return new Transaction(amount, _clock.GetTime());
         }
     }
 }
