@@ -17,7 +17,7 @@ namespace bank_kata
 
         public void Print(Statement statement)
         {
-            var line = "DATE | AMOUNT | BALANCE" + Environment.NewLine;
+            var line = "DATE       | AMOUNT  | BALANCE" + Environment.NewLine;
             foreach (var orderLine in statement.OrderLines) {
                 line += _statementLineFormatter.Format(orderLine) + Environment.NewLine;
             }
