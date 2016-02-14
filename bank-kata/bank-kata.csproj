@@ -43,11 +43,13 @@
     <Compile Include="AccountService.cs" />
     <Compile Include="Infrastructure\Clock.cs" />
     <Compile Include="Infrastructure\Console.cs" />
+    <Compile Include="Transactions\ITransactionFactory.cs" />
     <Compile Include="Statements\ConsoleStatementPrinter.cs" />
     <Compile Include="IAccountService.cs" />
     <Compile Include="Infrastructure\IClock.cs" />
     <Compile Include="Infrastructure\IConsole.cs" />
     <Compile Include="Statements\IStatementPrinter.cs" />
+    <Compile Include="Transactions\TransactionFactory.cs" />
     <Compile Include="Transactions\ITransactionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transactions\Transaction.cs" />

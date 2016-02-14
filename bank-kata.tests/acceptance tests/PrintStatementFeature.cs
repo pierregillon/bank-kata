@@ -20,8 +20,8 @@ namespace bank_kata.tests.acceptance_tests
 
             _accountService = new AccountService(
                 new InMemoryTransactionRepository(),
-                new ConsoleStatementPrinter(_console),
-                _clock);
+                new TransactionFactory(_clock), 
+                new ConsoleStatementPrinter(_console));
         }
 
         [Fact]
