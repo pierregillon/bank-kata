@@ -2,7 +2,7 @@
 using NSubstitute;
 using Xunit;
 
-namespace bank_kata.tests
+namespace bank_kata.tests.acceptance_tests
 {
     public class Statement_Printing
     {
