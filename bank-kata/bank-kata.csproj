@@ -47,7 +47,6 @@
     <Compile Include="IAccountService.cs" />
     <Compile Include="Infrastructure\IClock.cs" />
     <Compile Include="Infrastructure\IConsole.cs" />
-    <Compile Include="Statements\StatementLineFormatter.cs" />
     <Compile Include="Statements\IStatementPrinter.cs" />
     <Compile Include="Transactions\ITransactionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

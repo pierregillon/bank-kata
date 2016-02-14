@@ -9,22 +9,18 @@ namespace bank_kata.Statements
     public class ConsoleStatementPrinter : IStatementPrinter
     {
         private readonly IConsole _console;
-        private readonly StatementLineFormatter _statementLineFormatter;
 
-        public ConsoleStatementPrinter(
-            IConsole console,
-            StatementLineFormatter statementLineFormatter)
+        public ConsoleStatementPrinter(IConsole console)
         {
             _console = console;
-            _statementLineFormatter = statementLineFormatter;
         }
 
         public void Print(IEnumerable<Transaction> transactions)
         {
             var statement = GenerateStatementFrom(transactions);
-            var line = "DATE       | AMOUNT  | BALANCE" + Environment.NewLine;
+            var line = "DATE | AMOUNT | BALANCE" + Environment.NewLine;
             foreach (var orderLine in statement.OrderLines) {
-                line += _statementLineFormatter.Format(orderLine) + Environment.NewLine;
+                line += Format(orderLine) + Environment.NewLine;
             }
             _console.Print(line);
         }
@@ -41,6 +37,16 @@ namespace bank_kata.Statements
                 transaction.Date,
                 transaction.Amount,
                 balance += transaction.Amount));
+        }
+
+        public string Format(StatementLine statementLine)
+        {
+            return $"{statementLine.Date.ToShortDateString()} | {ToDecimal(statementLine.Amount)} | {ToDecimal(statementLine.Balance)}";
+        }
+
+        private string ToDecimal(int value)
+        {
+            return $"{value:0.00}";
         }
     }
 }
