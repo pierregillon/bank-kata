@@ -7,35 +7,35 @@ using Xunit;
 
 namespace bank_kata.tests.acceptance_tests
 {
-    public class Statement_Printing
+    public class PrintStatementFeature
     {
         private readonly IConsole _console;
         private readonly IClock _clock;
-        private readonly BankService _bankService;
+        private readonly AccountService _accountService;
 
-        public Statement_Printing()
+        public PrintStatementFeature()
         {
             _console = Substitute.For<IConsole>();
             _clock = Substitute.For<IClock>();
 
-            _bankService = new BankService(
+            _accountService = new AccountService(
                 new InMemoryTransactionRepository(),
                 new ConsoleStatementPrinter(_console, new StatementLineFormatter()),
                 _clock);
         }
 
         [Fact]
-        public void a_bank_service_should_print_statements_in_inverse_chronological_order()
+        public void an_account_service_should_print_statement_containing_all_transactions()
         {
             _clock.GetTime().Returns(
                 new DateTime(2014, 04, 01),
                 new DateTime(2014, 04, 02),
                 new DateTime(2014, 04, 10));
 
-            _bankService.Deposit(1000);
-            _bankService.Withdraw(100);
-            _bankService.Deposit(500);
-            _bankService.PrintStatements();
+            _accountService.Deposit(1000);
+            _accountService.Withdraw(100);
+            _accountService.Deposit(500);
+            _accountService.PrintStatement();
 
             _console.Received().Print(
                 "DATE       | AMOUNT  | BALANCE" + Environment.NewLine +

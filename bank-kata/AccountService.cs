@@ -6,13 +6,13 @@ using bank_kata.Transactions;
 
 namespace bank_kata
 {
-    public class BankService : IBankService
+    public class AccountService : IAccountService
     {
         private readonly ITransactionRepository _transactionRepository;
         private readonly IStatementPrinter _statementPrinter;
         private readonly IClock _clock;
 
-        public BankService(
+        public AccountService(
             ITransactionRepository transactionRepository,
             IStatementPrinter statementPrinter,
             IClock clock)
@@ -30,7 +30,7 @@ namespace bank_kata
         {
             _transactionRepository.Add(CreateTransaction(-amount));
         }
-        public void PrintStatements()
+        public void PrintStatement()
         {
             var transactions = _transactionRepository.GetTransactions();
             _statementPrinter.Print(GenerateStatementFrom(transactions));

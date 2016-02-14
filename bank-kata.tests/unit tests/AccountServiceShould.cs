@@ -7,46 +7,46 @@ using Xunit;
 
 namespace bank_kata.tests.unit_tests
 {
-    public class Bank_service_should
+    public class AccountServiceShould
     {
         private static readonly DateTime SOME_TIME = new DateTime(2016, 02, 14);
 
-        private readonly BankService _bankService;
+        private readonly AccountService _accountService;
         private readonly ITransactionRepository _transactionRepository;
         private readonly IClock _clock;
         private readonly IStatementPrinter _statementPrinter;
 
-        public Bank_service_should()
+        public AccountServiceShould()
         {
             _clock = Substitute.For<IClock>();
             _transactionRepository = Substitute.For<ITransactionRepository>();
             _statementPrinter = Substitute.For<IStatementPrinter>();
 
-            _bankService = new BankService(_transactionRepository, _statementPrinter, _clock);
+            _accountService = new AccountService(_transactionRepository, _statementPrinter, _clock);
         }
 
         [Fact]
-        public void register_transaction_for_a_deposit()
+        public void store_a_deposit_transaction()
         {
             _clock.GetTime().Returns(SOME_TIME);
 
-            _bankService.Deposit(100);
+            _accountService.Deposit(100);
 
             _transactionRepository.Received().Add(new Transaction(100, SOME_TIME));
         }
 
         [Fact]
-        public void register_transaction_for_a_withdraw()
+        public void store_a_withdraw_transaction()
         {
             _clock.GetTime().Returns(SOME_TIME);
 
-            _bankService.Withdraw(50);
+            _accountService.Withdraw(50);
 
             _transactionRepository.Received().Add(new Transaction(-50, new DateTime(2016, 02, 14)));
         }
 
         [Fact]
-        public void print_statements()
+        public void print_a_statement()
         {
             _transactionRepository.GetTransactions().Returns(new[]
             {
@@ -54,7 +54,7 @@ namespace bank_kata.tests.unit_tests
                 new Transaction(-20, new DateTime(2016, 02, 15)),
             });
 
-            _bankService.PrintStatements();
+            _accountService.PrintStatement();
 
             _statementPrinter.Received().Print(Statement.Create(new []
             {

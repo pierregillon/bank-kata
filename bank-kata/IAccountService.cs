@@ -1,9 +1,9 @@
 ﻿namespace bank_kata
 {
-    public interface IBankService
+    public interface IAccountService
     {
         void Deposit(int amount);
         void Withdraw(int amount);
-        void PrintStatements();
+        void PrintStatement();
     }
 }

@@ -40,11 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BankService.cs" />
+    <Compile Include="AccountService.cs" />
     <Compile Include="Infrastructure\Clock.cs" />
     <Compile Include="Infrastructure\Console.cs" />
     <Compile Include="Statements\ConsoleStatementPrinter.cs" />
-    <Compile Include="IBankService.cs" />
+    <Compile Include="IAccountService.cs" />
     <Compile Include="Infrastructure\IClock.cs" />
     <Compile Include="Infrastructure\IConsole.cs" />
     <Compile Include="Statements\StatementLineFormatter.cs" />
