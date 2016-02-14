@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankService.cs" />
+    <Compile Include="Clock.cs" />
     <Compile Include="IBankService.cs" />
+    <Compile Include="IClock.cs" />
     <Compile Include="IConsole.cs" />
     <Compile Include="IStatementRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

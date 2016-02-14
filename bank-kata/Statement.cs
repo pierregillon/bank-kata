@@ -1,10 +1,12 @@
+using System;
+
 namespace bank_kata
 {
     public class Statement
     {
         private readonly int _amount;
 
-        public Statement(int amount)
+        public Statement(int amount, DateTime dateTime)
         {
             _amount = amount;
         }
