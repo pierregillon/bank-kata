@@ -45,10 +45,10 @@
     <Compile Include="IBankService.cs" />
     <Compile Include="IClock.cs" />
     <Compile Include="IConsole.cs" />
-    <Compile Include="IStatementRepository.cs" />
+    <Compile Include="ITransactionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Statement.cs" />
-    <Compile Include="StatementRepository.cs" />
+    <Compile Include="Transaction.cs" />
+    <Compile Include="TransactionRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="todo.txt" />

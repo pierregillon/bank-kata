@@ -9,33 +9,34 @@ namespace bank_kata.tests.unit_tests
         private static readonly DateTime SOME_TIME = new DateTime(2016, 02, 14);
 
         private readonly BankService _bankService;
-        private readonly IStatementRepository _statementRepository;
+        private readonly ITransactionRepository _transactionRepository;
         private readonly IClock _clock;
 
         public Bank_service_should()
         {
             _clock = Substitute.For<IClock>();
-            _statementRepository = Substitute.For<IStatementRepository>();
-            _bankService = new BankService(_statementRepository, _clock);
+            _transactionRepository = Substitute.For<ITransactionRepository>();
+            _bankService = new BankService(_transactionRepository, _clock);
         }
+
         [Fact]
-        public void add_deposit_line_statement_to_repository()
+        public void register_transaction_for_a_deposit()
         {
             _clock.GetTime().Returns(SOME_TIME);
 
             _bankService.Deposit(100);
 
-            _statementRepository.Received().Add(new Statement(100, SOME_TIME));
+            _transactionRepository.Received().Add(new Transaction(100, SOME_TIME));
         }
 
         [Fact]
-        public void add_withdraw_line_statement_to_repository()
+        public void register_transaction_for_a_withdraw()
         {
             _clock.GetTime().Returns(SOME_TIME);
 
             _bankService.Withdraw(50);
 
-            _statementRepository.Received().Add(new Statement(-50, new DateTime(2016, 02, 14)));
+            _transactionRepository.Received().Add(new Transaction(-50, new DateTime(2016, 02, 14)));
         }
     }
 }

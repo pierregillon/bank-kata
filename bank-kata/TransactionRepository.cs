@@ -1,8 +1,8 @@
 namespace bank_kata
 {
-    public class StatementRepository : IStatementRepository
+    public class TransactionRepository : ITransactionRepository
     {
-        public void Add(Statement statement)
+        public void Add(Transaction transaction)
         {
             throw new System.NotImplementedException();
         }
