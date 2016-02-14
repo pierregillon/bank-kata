@@ -16,7 +16,7 @@ namespace bank_kata
 
         public void Withdraw(int amount)
         {
-            throw new System.NotImplementedException();
+            _statementRepository.Add(new Statement(-amount));
         }
 
         public void PrintStatements()
