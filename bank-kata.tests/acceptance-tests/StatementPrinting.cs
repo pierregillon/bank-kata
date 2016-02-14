@@ -3,12 +3,12 @@ using Xunit;
 
 namespace bank_kata.tests
 {
-    public class Bank_service_should
+    public class Statement_Printing
     {
         [Fact]
-        public void print_statements_in_inverse_chronological_order()
+        public void a_bank_service_should_print_statements_in_inverse_chronological_order()
         {
-            var bankService = new BankService();
+            var bankService = new BankService(new StatementRepository());
             var console = Substitute.For<IConsole>();
 
             bankService.Deposit(1000);

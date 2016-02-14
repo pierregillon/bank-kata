@@ -43,7 +43,10 @@
     <Compile Include="BankService.cs" />
     <Compile Include="IBankService.cs" />
     <Compile Include="IConsole.cs" />
+    <Compile Include="IStatementRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statement.cs" />
+    <Compile Include="StatementRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="todo.txt" />
