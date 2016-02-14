@@ -8,6 +8,8 @@ namespace bank_kata.Statements
 {
     public class ConsoleStatementPrinter : IStatementPrinter
     {
+        private const string STATEMENT_HEADER = "DATE | AMOUNT | BALANCE";
+
         private readonly IConsole _console;
 
         public ConsoleStatementPrinter(IConsole console)
@@ -17,31 +19,21 @@ namespace bank_kata.Statements
 
         public void Print(IEnumerable<Transaction> transactions)
         {
-            var statement = GenerateStatementFrom(transactions);
-            var line = "DATE | AMOUNT | BALANCE" + Environment.NewLine;
-            foreach (var orderLine in statement.OrderLines) {
-                line += Format(orderLine) + Environment.NewLine;
-            }
-            _console.Print(line);
+            var runningBalance = 0;
+
+            var statements = transactions
+                .Select(x => Format(x.Date, x.Amount, runningBalance += x.Amount))
+                .Reverse()
+                .ToList();
+
+            statements.Insert(0, STATEMENT_HEADER);
+
+            _console.Print(string.Join(Environment.NewLine, statements));
         }
 
-        private static Statement GenerateStatementFrom(IEnumerable<Transaction> transactions)
+        public string Format(DateTime date, int amount, int balance)
         {
-            var statementLines = GenerateStatementLines(transactions);
-            return Statement.Create(statementLines);
-        }
-        private static IEnumerable<StatementLine> GenerateStatementLines(IEnumerable<Transaction> transactions)
-        {
-            var balance = 0;
-            return transactions.Select(transaction => new StatementLine(
-                transaction.Date,
-                transaction.Amount,
-                balance += transaction.Amount));
-        }
-
-        public string Format(StatementLine statementLine)
-        {
-            return $"{statementLine.Date.ToShortDateString()} | {ToDecimal(statementLine.Amount)} | {ToDecimal(statementLine.Balance)}";
+            return $"{date.ToShortDateString()} | {ToDecimal(amount)} | {ToDecimal(balance)}";
         }
 
         private string ToDecimal(int value)

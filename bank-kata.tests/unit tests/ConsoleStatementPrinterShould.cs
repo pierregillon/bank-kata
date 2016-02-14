@@ -27,7 +27,7 @@ namespace bank_kata.tests.unit_tests
         {
             _consoleStatementPrinter.Print(NO_TRANSACTION);
 
-            _console.Received().Print("DATE | AMOUNT | BALANCE" + Environment.NewLine);
+            _console.Received().Print("DATE | AMOUNT | BALANCE");
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace bank_kata.tests.unit_tests
             _console.Received().Print(
                 "DATE | AMOUNT | BALANCE" + Environment.NewLine +
                 "15/02/2016 | -20.00 | 20.00" + Environment.NewLine +
-                "14/02/2016 | 40.00 | 40.00" + Environment.NewLine
+                "14/02/2016 | 40.00 | 40.00"
                 );
         }
     }
