@@ -1,4 +1,4 @@
-namespace bank_kata
+namespace bank_kata.Statements
 {
     public interface IStatementPrinter
     {

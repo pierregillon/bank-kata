@@ -1,4 +1,7 @@
 ﻿using System;
+using bank_kata.Infrastructure;
+using bank_kata.Statements;
+using bank_kata.Transactions;
 using NSubstitute;
 using Xunit;
 

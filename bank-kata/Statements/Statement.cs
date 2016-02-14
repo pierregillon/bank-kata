@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace bank_kata
+namespace bank_kata.Statements
 {
     public class Statement
     {

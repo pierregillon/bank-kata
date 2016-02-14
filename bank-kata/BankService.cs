@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using bank_kata.Infrastructure;
+using bank_kata.Statements;
+using bank_kata.Transactions;
 
 namespace bank_kata
 {

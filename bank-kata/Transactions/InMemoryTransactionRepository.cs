@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace bank_kata
+namespace bank_kata.Transactions
 {
     public class InMemoryTransactionRepository : ITransactionRepository
     {

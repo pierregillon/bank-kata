@@ -1,6 +1,6 @@
 using System;
 
-namespace bank_kata
+namespace bank_kata.Transactions
 {
     public class Transaction
     {

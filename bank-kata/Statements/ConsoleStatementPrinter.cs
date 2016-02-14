@@ -1,6 +1,7 @@
 using System;
+using bank_kata.Infrastructure;
 
-namespace bank_kata
+namespace bank_kata.Statements
 {
     public class ConsoleStatementPrinter : IStatementPrinter
     {
