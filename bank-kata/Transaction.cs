@@ -4,11 +4,13 @@ namespace bank_kata
 {
     public class Transaction
     {
-        private readonly int _amount;
+        public int Amount { get; }
+        public DateTime Date { get; }
 
-        public Transaction(int amount, DateTime dateTime)
+        public Transaction(int amount, DateTime date)
         {
-            _amount = amount;
+            Amount = amount;
+            Date = date;
         }
 
         public override bool Equals(object obj)
@@ -17,7 +19,7 @@ namespace bank_kata
                 return base.Equals(obj);
             }
             var target = (Transaction) obj;
-            return target._amount == _amount;
+            return target.Amount == Amount && target.Date == Date;
         }
     }
 }
